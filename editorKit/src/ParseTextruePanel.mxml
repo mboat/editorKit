@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" creationComplete="group1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			public var fileDirs:ArrayCollection;
+			protected function group1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				fileDirs=tree.dataProvider as ArrayCollection;
+				fileDirs.addItemAt(File.desktopDirectory,fileDirs.length);
+				tree.dataProvider=fileDirs;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<mx:HDividedBox id="test_hdivibox" y="20" width="100%" height="100%">
+		<s:Group minWidth="200" height="100%">
+			<mx:FileSystemTree width="100%" height="100%" id="tree">
+			</mx:FileSystemTree>
+		</s:Group>
+		<s:Panel  minWidth="800" height="100%"/>
+	</mx:HDividedBox>
+</s:Group>

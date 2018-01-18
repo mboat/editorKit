@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<navigation>
+		<menu label="文件">
+			<item label="导入资源"></item>
+			<item label="退出" enabled="false"></item>
+		</menu>
+		<menu label="视图">
+			<item label="解析特效" type="radio" groupName="one" selected="true"></item>
+			<item label="制作特效" type="radio" groupName="one"></item>
+			<item label="编辑场景" type="radio" groupName="one"></item>
+		</menu>	
+		<menu label="操作"></menu>
+	</navigation>
+	<models>
+		<item key='clothes'>角色怪物</item>
+		<item key='weapons'>武器</item>
+		<item key='wings'>翅膀</item>
+		<item key='horses'>坐骑</item>
+		<item key='effects'>特效</item>
+		<item key='other'>其他</item>
+	</models>
+	<actions>
+		<item key="stand">站立</item>
+		<item key="walk">攻击</item>
+		<item key="run">跑动</item>
+		<item key="death">死亡</item>
+		<item key="hit">受击</item>
+		<item key="attack">攻击</item>
+		<item key="skill">施法</item>
+	</actions>
+	<angles>
+		<angle key='0'>1</angle>
+		<angle key='45'>2</angle>
+		<angle key='90'>3</angle>
+		<angle key='135'>4</angle>
+		<angle key='180'>5</angle>
+	</angles>
+	<option></option>
+</root>

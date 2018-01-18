@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" width="1300" height="800"
+					   xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="windowedapplication1_creationCompleteHandler(event)" xmlns:local="*">
+	<fx:Script>
+		<![CDATA[
+			import com.data.GlobalData;
+			
+			import mx.events.FlexEvent;
+			
+			private var _cfgpath:String="/asset/cfg/config.xml";
+			private var _logpath:String="/log.txt";
+			private var _cfgXml:XML;
+			private var _root:String;
+			
+			private var _data:GlobalData;
+			
+			protected function windowedapplication1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				_data=GlobalData.instance();
+				NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);      
+				function onInvokeEvent(invocation:InvokeEvent):void   
+				{   
+					_data.arguments = invocation.arguments;   
+				}  
+				checkCfg();
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script source="com/App.as"/>
+	<mx:MenuBar id="menuBar" labelField="@label" width="100%"/>
+	<local:ParseTextruePanel id="parsePanel"/>
+</s:WindowedApplication>
