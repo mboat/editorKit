@@ -28,5 +28,5 @@ private function checkCfg():void{
  */
 private function showInfo():void{
 	var xmlList:XMLList=_cfgXml.elements(GameConst.CFG_NAV);
-	menuBar.dataProvider=xmlList.elements(GameConst.CFG_MENU);
+//	menuBar.dataProvider=xmlList.elements(GameConst.CFG_MENU);
 }

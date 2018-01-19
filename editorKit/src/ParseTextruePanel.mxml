@@ -14,6 +14,7 @@
 				fileDirs=tree.dataProvider as ArrayCollection;
 				fileDirs.addItemAt(File.desktopDirectory,fileDirs.length);
 				tree.dataProvider=fileDirs;
+				tree.selectedItem=new File("C:/Users/Administrator/Desktop/down");
 			}
 			
 		]]>
@@ -21,6 +22,9 @@
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
+	<s:BorderContainer>
+			<s:Button label="返回上级"/>
+	</s:BorderContainer>
 	<mx:HDividedBox id="test_hdivibox" y="20" width="100%" height="100%">
 		<s:Group minWidth="200" height="100%">
 			<mx:FileSystemTree width="100%" height="100%" id="tree">

@@ -25,7 +25,8 @@
 				{   
 					_data.arguments = invocation.arguments;   
 				}  
-				checkCfg();
+//				checkCfg();
+//				linkBar.dataProvider=["制作特效","编辑场景"]
 			}
 			
 		]]>
@@ -34,6 +35,7 @@
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
 	<fx:Script source="com/App.as"/>
-	<mx:MenuBar id="menuBar" labelField="@label" width="100%"/>
+	<!--<mx:MenuBar id="menuBar" labelField="@label" width="100%"/>-->
+	<!--<mx:LinkBar id="linkBar" backgroundColor="#0000ff"/>-->
 	<local:ParseTextruePanel id="parsePanel"/>
 </s:WindowedApplication>
