@@ -1,7 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<origin></origin>
-	<output></output>
+	<navigation>
+		<menu label="文件">
+			<item label="指定源目录" handler='setOriginDir'></item>
+			<item label="指定输出目录" handler='setOutputDir'></item>
+			<item label="退出" enabled="false"></item>
+		</menu>
+		<menu label='源格式'>
+			<item label="图片" type="radio" key="11" groupName="1" toggled="true"></item>
+		</menu>
+		<menu label='导出格式'>
+			<item label="图片" type="check" key="21" groupName="2"></item>
+			<item label="avatar" type="check" key="22" groupName="2" toggled="true"></item>
+		</menu>
+	</navigation>
+	<models>
+		<item key='clothes'>角色怪物</item>
+		<item key='weapons'>武器</item>
+		<item key='wings'>翅膀</item>
+		<item key='horses'>坐骑</item>
+		<item key='effects'>特效</item>
+		<item key='other'>其他</item>
+	</models>
+	<actions label="行为展示">
+		<item key="stand" label='站立'></item>
+		<item key="walk" label='攻击'></item>
+		<item key="run" label='跑动'></item>
+		<item key="death" label='死亡'></item>
+		<item key="hit" label='受击'></item>
+		<item key="attack" label='攻击'></item>
+		<item key="skill" label='施法'></item>
+	</actions>
+	<angles>
+		<angle key='0'>0</angle>
+		<angle key='45'>1</angle>
+		<angle key='90'>2</angle>
+		<angle key='135'>3</angle>
+		<angle key='180'>4</angle>
+	</angles>
+	<origin>C:\Users\Administrator\Desktop\down</origin>
+	<output />
 	<origin_type>1</origin_type>
 	<export_formats>1</export_formats>
 </root>

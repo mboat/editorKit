@@ -20,20 +20,20 @@
 			{
 				// TODO Auto-generated method stub
 				
-				_data=GlobalData.instance();
-				NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);      
-				function onInvokeEvent(invocation:InvokeEvent):void   
-				{   
-					_data.arguments = invocation.arguments;   
-				}  
-				checkCfg();
+//				_data=GlobalData.instance();
+//				NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);      
+//				function onInvokeEvent(invocation:InvokeEvent):void   
+//				{   
+//					_data.arguments = invocation.arguments;   
+//				}  
+//				checkCfg();
 			}
 			
 			public function setOriginDir(evt:MouseEvent=null):void{
-				FileUtil.browseForDirectory(browseOrgDirComplete,"设置资源目录");
+//				FileUtil.browseForDirectory(browseOrgDirComplete,"设置资源目录");
 			}
 			public function setOutputDir(evt:MouseEvent=null):void{
-				FileUtil.browseForDirectory(browseOutputDirComplete,"设置资源目录");
+//				FileUtil.browseForDirectory(browseOutputDirComplete,"设置资源目录");
 			}
 			
 		]]>
@@ -41,7 +41,6 @@
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
-	<fx:Script source="com/App.as"/>
 	<s:VGroup >
 		<s:HGroup y="25">
 			<s:Group>
@@ -65,9 +64,16 @@
 			<s:Panel minWidth="950" width="100%" height="100%" id="panel">
 				<mx:HDividedBox id="subHDiv" width="100%" height="100%">
 					<s:BorderContainer minWidth="150" height="100%">
-						<s:Group>
-							
-						</s:Group>
+						<s:VGroup>
+							<s:Group>
+								<s:Label text="偏移量像素x:"/>
+								<s:TextArea text="0"/>
+							</s:Group>
+							<s:Group>
+								<s:Label text="偏移量像素y:"/>
+								<s:TextArea text="0"/>
+							</s:Group>
+						</s:VGroup>
 					</s:BorderContainer>
 					<s:BorderContainer minWidth="800" height="100%" width="100%">
 						<s:VGroup width="100%">

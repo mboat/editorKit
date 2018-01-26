@@ -36,5 +36,8 @@
 		<angle key='135'>4</angle>
 		<angle key='180'>5</angle>
 	</angles>
-	<option></option>
+	<origin>C:\Users\Administrator\Desktop\down</origin>
+  	<output/>
+  	<origin_type>1</origin_type>
+  	<export_formats>1</export_formats>
 </root>

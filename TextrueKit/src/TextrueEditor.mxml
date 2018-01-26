@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" width="1200" height="900" 
+					   xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="windowedapplication1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import com.data.GlobalData;
+			import com.utils.FileUtil;
+			
+			import flash.net.getClassByAlias;
+			
+			import mx.events.FlexEvent;
+			import mx.events.MenuEvent;
+			
+			
+			private var _cfgpath:String="/asset/cfg/config.xml";
+			private var _logpath:String="/log.txt";
+			private var _cfgXml:XML;
+			private var _root:String;
+			
+			private var _data:GlobalData;
+			
+			private var funDict:Dictionary =new Dictionary(true);
+			protected function windowedapplication1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				initData();
+				
+				_data=GlobalData.instance();
+				NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, onInvokeEvent);      
+				function onInvokeEvent(invocation:InvokeEvent):void   
+				{   
+					_data.arguments = invocation.arguments;   
+				}  
+				
+				bar.addEventListener(MenuEvent.ITEM_CLICK,onclick);
+				function onclick(evt:MenuEvent):void{
+					trace(evt.item);
+					var itemXml:XML=evt.item as XML;
+					var key:String=itemXml.@handler;
+					if(key&&key.length>0){
+						var fun:Function=funDict[key];
+						if(fun!=null){
+							fun.apply();
+						}
+					}
+				}
+				
+				checkCfg();
+			}
+			
+			private function initData():void{
+				funDict["setOriginDir"]=setOriginDir;
+				funDict["setOutputDir"]=setOutputDir;
+			}
+			
+			public function setOriginDir(evt:MouseEvent=null):void{
+				FileUtil.browseForDirectory(browseOrgDirComplete,"设置资源目录");
+			}
+			public function setOutputDir(evt:MouseEvent=null):void{
+				FileUtil.browseForDirectory(browseOutputDirComplete,"设置资源目录");
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		<fx:XML id="myMenuData">
+			<root>
+				<menuitem label="MenuItem A" icon="myTopIcon">
+					<menuitem label="SubMenuItem A-1" enabled="false"/>
+					<menuitem label="SubMenuItem A-2"/>
+				</menuitem>
+				<menuitem label="MenuItem D" icon="myTopIcon">
+					<menuitem label="MenuItem B" type="check" toggled="true"/>
+					<menuitem label="MenuItem C" type="check"  icon="myTopIcon"/>
+					<menuitem type="separator"/> 
+					<menuitem label="SubMenuItem D-1" type="radio" groupName="one"/>
+					<menuitem label="SubMenuItem D-2" type="radio" groupName="one" toggled="true"/>
+					<menuitem label="SubMenuItem D-3" type="radio" groupName="one"/>
+				</menuitem>
+			</root>
+		</fx:XML>
+	</fx:Declarations>
+	
+	<mx:HDividedBox y="22" height="100%" width="100%">
+		<s:Panel minWidth="200" height="100%" id="orgPanel">
+			<mx:Tree id="orgTree" labelField="@label" width="100%" height="100%"/>
+		</s:Panel>
+		<s:Panel minWidth="800" height="100%" id="viewPanel">
+			<mx:VDividedBox width="100%" height="100%">
+				<s:BorderContainer minHeight="128"  width="100%" height="128">
+					<s:HGroup y="10">
+						<s:Label text="（时钟参照）方向：" width="120"/>
+						<s:Group>
+							<s:RadioButton groupName="dir" id="dir_0" y="-5"/>
+							<s:Label text="0(0°)" x="15" width="35"/>
+						</s:Group>
+						<s:Group>
+							<s:RadioButton groupName="dir" id="dir_1" y="-5"/>
+							<s:Label text="1(45°)" x="15" width="40"/>
+						</s:Group>
+						<s:Group>
+							<s:RadioButton groupName="dir" id="dir_2" y="-5"/>
+							<s:Label text="2(90°)" x="15" width="50"/>
+						</s:Group>
+						<s:Group>
+							<s:RadioButton groupName="dir" id="dir_3" y="-5"/>
+							<s:Label text="3(135°)" x="15" width="50"/>
+						</s:Group>
+						<s:Group>
+							<s:RadioButton groupName="dir" id="dir_4" y="-5"/>
+							<s:Label text="4(180°)" x="15" width="50"/>
+						</s:Group>
+						<s:Label text="" width="60"/>
+						<s:Label text="（偏移像素）参数：" width="120"/>
+						<s:Group>
+							<s:Label text="offX："/>
+							<s:TextArea text="0" x="40" width="30" height="20" y="-5"/>
+						</s:Group>
+						<s:Group>
+							<s:Label text=" offY："/>
+							<s:TextArea text="0" x="40" width="30" height="20" y="-5"/>
+						</s:Group>
+					</s:HGroup>
+					
+						<s:HGroup y="35">
+							<s:Label text="（帧频时间）设置：" width="120" />
+							<s:Group >
+								<s:CheckBox id="differBox" y="-3"/>
+								<s:Label text="非等间隔" x="20" width="50"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="总时间："/>
+								<s:TextArea text="0" width="30" height="20" x="50" y="-3"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="单帧时间："/>
+								<s:TextArea text="0" width="30" height="20" x="60" y="-3"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="施法帧："/>
+								<s:TextArea text="0" width="30" height="20" x="60" y="-3"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="伤害帧："/>
+								<s:TextArea text="0" width="30" height="20" x="60" y="-3"/>
+							</s:Group>
+						</s:HGroup>
+					<s:BorderContainer y="60" width="100%" height="70">
+						<s:Group y="10">
+							<s:Label text="（图片帧频）时轴："/>
+							<s:Button x="120" label="播放" y="-5"/>
+							
+						</s:Group>
+						<s:HGroup x="5" y="30" minHeight="35"  width="100%" height="35">
+							<s:TextArea width="50" height="100%"/>
+							<s:TextArea width="50" height="100%"/>
+							<s:TextArea width="50" height="100%"/>
+							<s:TextArea width="50" height="100%"/>
+							<s:TextArea width="50" height="100%"/>
+						</s:HGroup>
+					</s:BorderContainer>
+					
+				</s:BorderContainer>
+				<s:BorderContainer minHeight="600"  width="100%" height="100%">
+				</s:BorderContainer>
+			</mx:VDividedBox>
+		</s:Panel>
+	</mx:HDividedBox>
+	<mx:MenuBar id="bar" labelField="@label" width="100%"/>
+	<fx:Script source="com/App.as"/>
+</s:WindowedApplication>

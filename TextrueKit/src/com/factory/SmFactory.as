@@ -7,7 +7,6 @@ package com.factory
 	
 	import flash.display.BitmapData;
 	import flash.filesystem.File;
-	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;

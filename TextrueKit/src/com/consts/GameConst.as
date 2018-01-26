@@ -8,6 +8,14 @@ package com.consts
 	public class GameConst
 	{
 		/**
+		 *导航栏
+		 */		
+		public static const NAVIGATION:String ="navigation";
+		/**
+		 *行为集
+		 */		
+		public static const ACTIONS:String ="actions";
+		/**
 		 *配置目录 
 		 */		
 		public static const ORIGIN_DIR:String ="origin";

@@ -25,12 +25,31 @@ private function checkCfg():void{
 	
 	path=_cfgXml[GameConst.OUTPUT_DIR];
 	if(checkPathExists(path)){
-		panel.title="输出路径："+path;
+		viewPanel.title="输出路径："+path;
 	}else{
-		panel.title="输出路径：";
+		viewPanel.title="输出路径：无";
 	}
 	path=_cfgXml[GameConst.ORIGIN_DIR];
-	checkPath(path,browseOrgDirComplete,"资源目录：");
+	if(checkPathExists(path)){
+		orgPanel.title="源路径："+path;
+	}else{
+		orgPanel.title="源路径：无";
+	}
+	
+	var navXml:XMLList=_cfgXml.elements(GameConst.NAVIGATION);
+	var barXml:XML=new XML(navXml.toXMLString());
+	
+	navXml=_cfgXml.elements(GameConst.ACTIONS);
+	var tempXml:XML=new XML("<item type='separator'/>");
+	navXml.appendChild(tempXml);
+	tempXml=new XML("<item label='增加行为'/>");
+	navXml.appendChild(tempXml);
+	barXml.appendChild(navXml);
+	
+	tempXml=new XML("<root><menu label='操作'><item label='选中导出'/><item label='全部导出'/></menu></root>");
+	barXml.appendChild(tempXml.elements());
+	bar.dataProvider=barXml.elements();
+//	checkPath(path,browseOrgDirComplete,"资源目录：");
 }
 
 
@@ -86,8 +105,7 @@ private function browseOrgDirComplete(file:File,savebool:Boolean=true):void{
 		_cfgXml[GameConst.ORIGIN_DIR]=file.nativePath;
 		saveCfg();
 	}
-	tree.dataProvider=file;
-	tree.visible=true;
+	orgTree.dataProvider=file;
 //	checkOutput();
 }
 
@@ -100,8 +118,7 @@ private function browseOutputDirComplete(file:File,savebool:Boolean=true):void{
 		_cfgXml[GameConst.OUTPUT_DIR]=file.nativePath;
 		saveCfg();
 	}
-//	
-//	FactoryManager.instance().startup();
+	viewPanel.title="输出路径："+file.nativePath;
 }
 
 private function checkOutput():void{

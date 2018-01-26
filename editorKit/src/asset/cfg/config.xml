@@ -30,11 +30,11 @@
 		<item key="skill">施法</item>
 	</actions>
 	<angles>
-		<angle key='0'>1</angle>
-		<angle key='45'>2</angle>
-		<angle key='90'>3</angle>
-		<angle key='135'>4</angle>
-		<angle key='180'>5</angle>
+		<angle key='0'>0</angle>
+		<angle key='45'>1</angle>
+		<angle key='90'>2</angle>
+		<angle key='135'>3</angle>
+		<angle key='180'>4</angle>
 	</angles>
 	<origin>C:\Users\Administrator\Desktop\down</origin>
   	<output/>
