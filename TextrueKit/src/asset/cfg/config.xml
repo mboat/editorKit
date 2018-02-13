@@ -8,6 +8,8 @@
 		</menu>
 		<menu label='源格式'>
 			<item label="图片" type="radio" key="11" groupName="1" toggled="true"></item>
+			<item label="format2" type="radio" key="12" groupName="1"></item>
+			<item label="format3" type="radio" key="13" groupName="1"></item>
 		</menu>
 		<menu label='导出格式'>
 			<item label="图片" type="check" key="21" groupName="2"></item>

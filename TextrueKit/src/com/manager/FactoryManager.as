@@ -1,4 +1,4 @@
-package com
+package com.manager
 {
 	import com.consts.GameConst;
 	import com.data.GlobalData;

@@ -1,4 +1,4 @@
-import com.FactoryManager;
+import com.manager.FactoryManager;
 import com.consts.GameConst;
 import com.utils.FileUtil;
 

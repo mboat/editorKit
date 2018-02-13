@@ -6,9 +6,7 @@
 		<![CDATA[
 			import com.data.GlobalData;
 			import com.utils.FileUtil;
-			
-			import flash.net.getClassByAlias;
-			
+						
 			import mx.events.FlexEvent;
 			import mx.events.MenuEvent;
 			
@@ -35,7 +33,6 @@
 				
 				bar.addEventListener(MenuEvent.ITEM_CLICK,onclick);
 				function onclick(evt:MenuEvent):void{
-					trace(evt.item);
 					var itemXml:XML=evt.item as XML;
 					var key:String=itemXml.@handler;
 					if(key&&key.length>0){
@@ -143,12 +140,22 @@
 							<s:Label width="20"/>
 							<s:Group >
 								<s:Label text="施法帧："/>
-								<s:TextArea text="0" width="30" height="20" x="60" y="-3"/>
+								<s:TextArea text="0" width="30" height="20" x="50" y="-3"/>
 							</s:Group>
 							<s:Label width="20"/>
 							<s:Group >
 								<s:Label text="伤害帧："/>
-								<s:TextArea text="0" width="30" height="20" x="60" y="-3"/>
+								<s:TextArea text="0" width="30" height="20" x="50" y="-3"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="旋转："/>
+								<s:TextArea text="0" width="30" height="20" x="30" y="-3"/>
+							</s:Group>
+							<s:Label width="20"/>
+							<s:Group >
+								<s:Label text="缩放："/>
+								<s:TextArea text="1" width="30" height="20" x="30" y="-3"/>
 							</s:Group>
 						</s:HGroup>
 					<s:BorderContainer y="60" width="100%" height="70">
